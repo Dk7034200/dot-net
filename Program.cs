@@ -4,24 +4,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-// Define a simple model
-public class Item
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-}
-
-// The entry point of the application
+// Define the entry point of the application
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
 // Enable static file serving (for images, CSS, JS, etc.)
-app.UseStaticFiles();  // This enables static files from wwwroot
+app.UseStaticFiles(); // This enables static files from wwwroot
 
 // Define routes for controllers
 app.MapControllerRoute(
@@ -30,7 +22,7 @@ app.MapControllerRoute(
 
 app.Run();
 
-// Create the ItemsController with Index action
+// Define the ItemsController with Index action
 public class ItemsController : Controller
 {
     public IActionResult Index()
@@ -44,4 +36,12 @@ public class ItemsController : Controller
 
         return View(items); // Return a view that will be rendered to the client
     }
+}
+
+// Define the simple model
+public class Item
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
 }
